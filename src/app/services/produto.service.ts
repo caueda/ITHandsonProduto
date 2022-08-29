@@ -5,7 +5,7 @@ import { Produto } from "../model/Produto.model";
 @Injectable({providedIn: 'root'})
 export class ProdutoService {
 
-    REST_API_PRODUTO = 'http://localhost:8888/api/v1/produto';
+    REST_API_PRODUTO = 'http://localhost:9999/api/v1/produto';
 
     constructor(private http: HttpClient) {}
     fetchProdutos() {

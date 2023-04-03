@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-micro-app": "ng build --single-bundle --output-hashing none --configuration production && npx live-server ./dist/ithandson-produto --port=4300 --cors",
     "build": "ng build --single-bundle --output-hashing none --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

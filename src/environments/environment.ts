@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  rest_api_produto: 'http://localhost:9999/api/v1/produto'
+  REST_API_PRODUTO: 'http://localhost:9999/api/v1/produto'
 };
 
 /*

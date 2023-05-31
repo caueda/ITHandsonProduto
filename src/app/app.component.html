@@ -1,78 +1,17 @@
-<p-dialog showHeader="false" [(visible)]="mensagem" appendTo="body">
-    {{mensagem}}
-</p-dialog>
-<div *ngIf="error" class="alert" [ngClass]="{'alert-danger': isUnexpectedError(), 'alert-warning': isBusinessError()}">
-    <h1 *ngIf="isUnexpectedError()">Um Erro aconteceu</h1>
-    <p>{{isUnexpectedError() ? "Verifique com o administrador, pois a API pode estar fora." + error.message : error.error.message}}</p>
-</div>  
-<div class="container-sm w-100 p-3">
-    <p-panel header="Produto">
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
-            <div class="p-fluid grid p-4">
-                <div class="field col-12 md:col-4 w-20">
-                    <div class="p-float-label">
-                        <input id="nome"
-                            name="nome"
-                            type="text"
-                            required="true" 
-                            pInputText                    
-                            [(ngModel)]="produto.nome"
-                            [ngClass]="nome.touched && nome.invalid ? 'ng-dirty ng-invalid mr-2' : ''"
-                            #nome="ngModel">
-                        <label for="nome">Nome</label>              
-                    </div>
-                    <small *ngIf="nome.touched && nome.invalid" id="sobrenome-help" class="p-error">O nome é obrigatório.</small>
-                </div>
-                <div class="field col-12 md:col-4 w-40">
-                    <div class="p-float-label">
-                        <input id="descricao"
-                            name="descricao"
-                            type="text"
-                            required="true"
-                            pInputText                    
-                            [(ngModel)]="produto.descricao"
-                            [ngClass]="descricao.touched && descricao.invalid ? 'ng-dirty ng-invalid mr-2' : ''"
-                            #descricao="ngModel">
-                        <label for="nome">Descrição</label>              
-                    </div>
-                    <small *ngIf="descricao.touched && descricao.invalid" id="sobrenome-help" class="p-error">A descrição é obrigatória.</small>
-                </div>
-                <div class="field col-12 md:col-4 w-40">
-                    <div class="p-float-label">
-                        <input id="imageUrl"
-                            name="imageUrl"
-                            type="text"
-                            required="true"
-                            pInputText                    
-                            [(ngModel)]="produto.imageUrl"
-                            [ngClass]="imageUrl.touched && imageUrl.invalid ? 'ng-dirty ng-invalid mr-2' : ''"
-                            #imageUrl="ngModel">
-                        <label for="imageUrl">URL da Imagem</label>              
-                    </div>
-                    <small *ngIf="imageUrl.touched && imageUrl.invalid" id="sobrenome-help" class="p-error">A URL da Imagem é obrigatória.</small>
-                </div>
-                <div class="field col-12 md:col-4 mt-4">
-                    <div class="p-float-label">
-                        <p-inputNumber id="preco"
-                            [(ngModel)]="produto.preco" 
-                            placeholder="Preço"
-                            required="true"
-                            name="preco"mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="100"
-                            [ngClass]="preco.touched && preco.invalid ? 'ng-dirty ng-invalid mr-2' : ''"
-                            #preco="ngModel">
-                        </p-inputNumber>       
-                        <label for="preco">Preço</label>
-                    </div>
-                    <small *ngIf="preco.touched && preco.invalid" id="quantidade-help" class="p-error">O preço é obrigatório.</small> 
-                </div>
-                <div class="field col-12 md:col-4 w-100">
-                    <div class="form-group">
-                        <p-image name="image" src="{{produto?.imageUrl}}"
-                            height="450px"></p-image>
-                    </div>
-                </div>
-                <p-button type="submit" [disabled]="f.invalid">Cadastrar</p-button>
-            </div>
-        </form>
-    </p-panel>
-</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a [routerLink]="['/produto/cadastrar']" class="list-group-item" routerLinkActive="active">
+            Cadastrar
+          </a>
+          <a [routerLink]="['/produto/consultar']" class="list-group-item" routerLinkActive="active">
+            Consultar
+          </a>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

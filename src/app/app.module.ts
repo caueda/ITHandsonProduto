@@ -24,10 +24,27 @@ import {InputTextModule} from 'primeng/inputtext';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ProdutoEditComponent } from './produto/produto-edit/produto-edit.component';
+import { ProdutoComponent } from './produto/produto/produto.component';
+import { ProdutoConsultaComponent } from './produto/produto-consulta/produto-consulta.component';
+
+const appRoutes: Routes = [
+  {path: '', redirectTo: '/produto/cadastrar', pathMatch: 'full'},
+  { path: 'produto/cadastrar', component: ProdutoComponent },
+  { path: 'produto/consultar', component: ProdutoConsultaComponent },
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertMessageComponent,
+    ProdutoFormComponent,
+    ProdutoEditComponent,
+    ProdutoComponent,
+    ProdutoConsultaComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +65,8 @@ import { HttpClientModule } from '@angular/common/http';
     InputTextareaModule,
     CarouselModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ConfirmationService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 

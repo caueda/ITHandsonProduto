@@ -1,17 +1,18 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a [routerLink]="['/produto/cadastrar']" class="list-group-item" routerLinkActive="active">
-            Cadastrar
-          </a>
-          <a [routerLink]="['/produto/consultar']" class="list-group-item" routerLinkActive="active">
-            Consultar
-          </a>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <router-outlet></router-outlet>
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a [routerLink]="['/produto/cadastrar']" class="list-group-item" routerLinkActive="active">
+          Cadastrar
+        </a>
+        <a [routerLink]="['/produto/consultar']" class="list-group-item" routerLinkActive="active">
+          Consultar
+        </a>
       </div>
     </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+</div>

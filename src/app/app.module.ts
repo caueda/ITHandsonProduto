@@ -22,7 +22,7 @@ import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
@@ -32,7 +32,7 @@ import { ProdutoComponent } from './produto/produto/produto.component';
 import { ProdutoConsultaComponent } from './produto/produto-consulta/produto-consulta.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/produto/cadastrar', pathMatch: 'full'},
+  {path: 'produto', redirectTo: '/produto/cadastrar', pathMatch: 'full'},
   { path: 'produto/cadastrar', component: ProdutoComponent },
   { path: 'produto/consultar', component: ProdutoConsultaComponent },
 ];
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CalendarModule,
     InputMaskModule,

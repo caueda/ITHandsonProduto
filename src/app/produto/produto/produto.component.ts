@@ -9,15 +9,8 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
-  produto: Produto = {
-    nome: '',
-    descricao: '',
-    preco: null,
-    imageUrl: null
-  };
-
   loading: boolean = false;
-  error: null;
+  errorResponse = null;
   mensagem: string = null;
 
   constructor(private produtoService: ProdutoService) { }
@@ -25,29 +18,31 @@ export class ProdutoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  inicializaProduto() {
-    this.produto = {
-      nome: '',
-      descricao: '',
-      preco: null,
-      imageUrl: null
-    };
-  }
-
-  postProduto = () => {
-    this.produtoService.saveProduto({...this.produto})
+  postProduto = (produto: Produto = null) => {
+    this.produtoService.saveProduto({... produto})
       .subscribe({
         next: next => {},
         error: error => {
           console.log(error);
-          this.error = error;
+          this.errorResponse = error;
           this.mensagem = null;
         },
         complete: () => {
-          this.error = null;
+          this.errorResponse = null;
           this.mensagem = 'Produto criado com sucesso.';
-          this.inicializaProduto();
         }
       });
+  }
+
+  isUnexpectedError() {
+    return  this.errorResponse && (this.errorResponse?.error?.type !== undefined);
+  }
+
+  isBusinessError() {
+    return this.errorResponse && (this.errorResponse?.field);
+  }
+
+  closeDialog = () => {
+    this.mensagem = null;
   }
 }

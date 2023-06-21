@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Produto } from 'src/app/model/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -13,12 +13,14 @@ export class ProdutoComponent implements OnInit {
   errorResponse = null;
   mensagem: string = null;
 
+  @ViewChild('produtoForm') produtoForm: any;
+
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
   }
 
-  postProduto = (produto: Produto = null) => {
+  postProduto(produto) {
     this.produtoService.saveProduto({... produto})
       .subscribe({
         next: next => {},
@@ -30,6 +32,7 @@ export class ProdutoComponent implements OnInit {
         complete: () => {
           this.errorResponse = null;
           this.mensagem = 'Produto criado com sucesso.';
+          this.produtoForm.resetForm();
         }
       });
   }

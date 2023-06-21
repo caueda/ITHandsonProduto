@@ -1,1 +1,4 @@
-<produto-form></produto-form>
+<produto-form #produtoForm [loading]="loading" [errorResponse]="errorResponse" [mensagem]="mensagem"
+    [isUnexpectedError]="isUnexpectedError" [isBusinessError]="isBusinessError"
+    [closeDialog]="closeDialog" (produtoFormEvent)="postProduto($event)">    
+</produto-form>

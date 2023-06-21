@@ -45,7 +45,7 @@ export class ProdutoFormComponent implements OnInit {
     });
   }
 
-  resertForm() {
+  resetForm() {
     this.form.reset();
   }
 
@@ -59,6 +59,7 @@ export class ProdutoFormComponent implements OnInit {
   }  
 
   onSubmit() {
+    console.log('ProdutoForm submitted', this.form.value);
     this.produtoFormEvent.emit(this.form.value);
   }
 }
